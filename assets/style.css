@@ -9,55 +9,85 @@
 body {
   background: url(img/bg-desktop-red.webp);
   font-family: Gluten;
+  margin: 0;
+}
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+.cartao {
+  position: relative;
+  margin: 1rem;
+  min-width: 18rem;
+  height: 20rem;
+  flex: 1 1 calc(33% - 4rem);
+  perspective: 1200px;
+  cursor: pointer;
 }
 .cartao__conteudo {
-  background-color: var(--card-front-color);
-  text-align: center;
+  position: relative;
+  width: 100%;
   height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
-.cartao__conteudo 
-{
+.cartao.virado .cartao__conteudo {
+  transform: rotateY(180deg);
+}
+.cartao__front,
+.cartao__back {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.cartao__front {
   background-color: var(--card-front-color);
-  text-align: center;
-  height: 100%;
+  color: var(--text-color);
 }
-cartao 
-{
-  margin: 1rem 1rem;
-  height: 20rem;
-  flex-grow: 1;
-  flex-basis: calc(33% - 6rem);
+.cartao__back {
+  background-color: var(--card-back-color);
+  color: white;
+  transform: rotateY(180deg);
 }
-cartao {
-  margin: 1rem 1rem;
-  height: 20rem;
-  flex-grow: 1;
-  flex-basis: calc(33% - 6rem);
+.cartao__conteudo p {
+  margin: 0.75rem 0 0;
+  padding: 0;
 }
-.cartao__conteudo p { 
-  padding: 4rem;
-}
-.cartao__conteudo h3 
-{
+.cartao__conteudo h3 {
   color: var(--text-color);
   border: 1px solid var(--text-color);
   text-align: left;
   padding: 0.5rem;
-  position: absolute;
-  margin: 0.6rem;
+  margin: 0 0 1rem 0;
   border-radius: 0.6rem;
-  font-size: 1vw;
+  font-size: 1rem;
+  width: 100%;
+  background-color: rgba(255,255,255,0.8);
 }
-.cartao__conteudo__pergunta p 
-{
+.cartao__back h3 {
+  background-color: rgba(255,255,255,0.15);
+  border-color: transparent;
+  color: white;
+}
+.cartao__conteudo__resposta p {
+  color: white;
+  font-weight: 700;
+}
+.cartao__conteudo__pergunta p {
   color: var(--text-color);
   font-weight: 500;
 }
-.cartao__conteudo__resposta p 
-{
-  color: var(--card-back-color);
-  font-weight: 700;
-}
+
 footer 
 {
   background-color: black;
